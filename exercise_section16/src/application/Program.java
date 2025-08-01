@@ -6,6 +6,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Contract;
+import entities.Installment;
+import services.ContractService;
 
 public class Program {
 
@@ -16,7 +18,7 @@ public class Program {
 		
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
-		System.out.println("Enter with the contract data:");
+		System.out.println("Enter the contract details:");
 		System.out.print("Number: ");
 		int number = sc.nextInt();
 		System.out.print("Date (dd/MM/yyyy): ");
@@ -26,7 +28,17 @@ public class Program {
 		
 		Contract obj = new Contract(number, date, totalValue);
 		
+		System.out.print("Enter the number of installments: ");
+		int n = sc.nextInt();
 		
+		//test
+		ContractService contractService = new ContractService(null);
+		contractService.processContract(obj, n);
+		
+		System.out.println("Installments:");
+		for(Installment installment : obj.getInstallments()) {
+			System.out.println(installment);
+		}
 		
 		sc.close();
 	}
