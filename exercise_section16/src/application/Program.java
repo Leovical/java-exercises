@@ -32,7 +32,6 @@ public class Program {
 		System.out.print("Enter the number of installments: ");
 		int n = sc.nextInt();
 		
-		//test
 		ContractService contractService = new ContractService(new PaypalService());
 		contractService.processContract(obj, n);
 		
